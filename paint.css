@@ -1,0 +1,105 @@
+.pacman, .ball, .ghost{
+    border-width: 0px;
+}
+.ball{
+    background-color: #ffe463;
+}
+/* 1. Convertion en pixel */
+section{
+    width: 50%;
+    height: 10rem;
+    border: 6px solid #0000ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* 2. Box-sizing */
+article{
+    width:500px;
+    height: 70px;
+    border: 2px solid black;
+}
+.box-sizing-content{
+    border: 5px solid red;
+    background-color: orange;
+    width: 100%;
+    height: 50%;
+    padding: 5px;
+    box-sizing: content-box;
+}
+.box-sizing-border{
+    border: 5px solid purple;
+    background-color: green;
+    width: 100%;
+    height: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+
+/* 4. Stacking context */
+.ghost{
+    position: relative;
+}
+.eye{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    top: 13px;
+}
+.eye::before{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 50%;
+    top: 3px;
+    left: 1px;
+}
+
+.eye-left{
+    z-index: 4;
+    left: 6px;
+}
+.eye-left::before{
+    z-index: 2;
+}
+
+.eye-right{
+    z-index: 4;
+    left: 26px;
+}
+.eye-right::before{
+    z-index: 2;
+}
+
+
+/* 5. Réorganisation */
+/* section{
+    animation: smallSize 3s forwards;
+}
+@keyframes smallSize {
+    100%{
+        width: 40%;
+        height: 5rem;
+        gap:1%;
+    }
+} */
+
+
+/* Rafraîchissement*/
+.pacman:before{
+    animation: mouth 1s 5;
+}
+
+@keyframes mouth {
+    0% { clip-path: polygon(100% 74%, 44% 48%, 100% 21%); }
+    50% {  clip-path: polygon(100% 50%, 44% 48%, 100% 50%); }
+    100% { clip-path: polygon(100% 74%, 44% 48%, 100% 21%); }
+}
